@@ -9,9 +9,9 @@ namespace VideoGameCharacter.Services
 
         Task<GetCharacterResponseDto?> GetCharacterByIdAsync(int id);
 
-        Task<GetCharacterResponseDto> AddCharacterAsync(Character character);
+        Task<GetCharacterResponseDto> AddCharacterAsync(CreateCharacterRequest character);
 
-        Task<bool> UpdateCharacterAsync(int id, Character character);
+        Task<bool> UpdateCharacterAsync(int id, UpdateCharacterRequest character);
 
         Task<bool> DeleteCharacterAsync(int id);
 

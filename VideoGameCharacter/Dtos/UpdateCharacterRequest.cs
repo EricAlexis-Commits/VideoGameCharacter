@@ -1,6 +1,6 @@
 ﻿namespace VideoGameCharacter.Dtos
 {
-    public class GetCharacterResponseDto
+    public class UpdateCharacterRequest
     {
         public int Id { get; set; }
 

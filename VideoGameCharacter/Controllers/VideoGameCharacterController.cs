@@ -25,6 +25,22 @@ namespace VideoGameCharacter.Controllers
             }
             return Ok(character);
         }
+        [HttpPost]
+        public async Task<ActionResult<List<GetCharacterResponseDto>>> AddCharacter(CreateCharacterRequest request) {
+            var createdCharacter = await services.AddCharacterAsync(request);
+            return CreatedAtAction(nameof(GetCharacter), new { id = createdCharacter.Id }, createdCharacter);
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<List<UpdateCharacterRequest>>> UpdateCharacter(int id,UpdateCharacterRequest update) {
+            var updatedCharacter = await services.UpdateCharacterAsync(id, update);
+            return updatedCharacter ? NoContent():NotFound ("Character with the given Id was not found");
+        }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<UpdateCharacterRequest>>> DeleteCharacter(int id)
+        {
+            var deletedCharacter = await services.DeleteCharacterAsync(id);
+            return deletedCharacter ? NoContent() : NotFound("Character with the given Id was not found");
+        }
     }
 }
